@@ -1,0 +1,9 @@
+name: spu-api
+version: 0.1.0
+
+authors:
+  - Scott McClung <scott@nerdmagik.com>
+
+crystal: '>= 1.10.1'
+
+license: MIT
