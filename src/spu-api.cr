@@ -78,6 +78,7 @@ module Spu
           "zip"          => "",
         },
       })
+      raise RequestError.new("Unable to recognize address: #{@address}") if response["address"].size == 0
       @premise_code = response["address"][0]["premCode"].to_s
     end
 
@@ -88,6 +89,7 @@ module Spu
           "premCode" => prem_code,
         },
       })
+      # raise RequestError.new("Unable to locate an account at #{@address}") if response["account"]["accountNumber"].as_s?.nil?
       @account_number = response["account"]["accountNumber"].to_s
     end
 
@@ -208,13 +210,17 @@ module Spu
       final_headers = HTTP::Headers{"Content-Type" => "application/json", "Accept" => "application/json"}
       final_headers.merge!(headers) if headers
       response = HTTP::Client.post uri, headers: final_headers, body: payload
-      process_request(response)
+      process_response(response)
     end
 
-    private def self.process_request(response : HTTP::Client::Response)
+    private def self.process_response(response : HTTP::Client::Response)
+      response.body if is_valid(response)
+    end
+
+    private def self.is_valid(response : HTTP::Client::Response)
       case response.status_code
       when 200..299
-        return response.body
+        return true
       else
         raise Spu::RequestError.new("#{response.status_code}: #{response.status_message}")
       end

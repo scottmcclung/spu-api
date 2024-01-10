@@ -9,7 +9,7 @@ TODO: Write a description here
    ```yaml
    dependencies:
      spu-api:
-       github: your-github-user/spu-api
+       github: scottmcclung/spu-api
    ```
 
 2. Run `shards install`
@@ -18,17 +18,18 @@ TODO: Write a description here
 
 ```crystal
 require "spu-api"
+
+acct = Spu::Account.new("1201 2nd Ave")
+p acct.next_collection_day
+p acct.collection_schedule
 ```
 
 TODO: Write usage instructions here
 
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/spu-api/fork>)
+1. Fork it (<https://github.com/scottmcclung/spu-api/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -36,4 +37,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [Scott McClung](https://github.com/your-github-user) - creator and maintainer
+- [Scott McClung](https://github.com/scottmcclung) - creator and maintainer

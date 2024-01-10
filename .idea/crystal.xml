@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CrystalSettings" languageLevel="1.10">
+  <component name="CrystalSettings">
     <option name="mainFilePath" value="$PROJECT_DIR$/src/spu-api.cr" />
     <option name="useFormatTool" value="true" />
   </component>
